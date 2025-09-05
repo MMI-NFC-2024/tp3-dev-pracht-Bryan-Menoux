@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GraphicSpecies from "../components/GraphicSpecies.astro";
+---
+
+<Layout>
+  <a
+    href="/"
+    class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow fixed top-6 left-6 z-10"
+    >← Retour à l'accueil</a
+  >
+  <h1
+    class="text-4xl md:text-5xl font-extrabold text-gray-900 text-center mb-12 select-none mt-16"
+  >
+    Mes Pingouins
+  </h1>
+  <nav>
+    <ul
+      class="flex flex-col gap-6 justify-center absolute transform -translate-y-1/2 top-1/2 left-6"
+    >
+      <li>
+        <a
+          href="#slide1"
+          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow scroll-smooth"
+          >Manchot Adélie</a
+        >
+      </li>
+      <li>
+        <a
+          href="#slide2"
+          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow scroll-smooth"
+          >Manchot Gentoo</a
+        >
+      </li>
+      <li>
+        <a
+          href="#slide3"
+          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow scroll-smooth"
+          >Manchot Chinstrap</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <div class="relative w-full max-w-3xl mx-auto overflow-x-scroll">
+    <div class="flex transition-transform duration-500 ease-in-out">
+      <div class="w-full shrink-0" id="slide1">
+        <GraphicSpecies species="Adelie" />
+      </div>
+      <div class="w-full shrink-0" id="slide2">
+        <GraphicSpecies species="Gentoo" />
+      </div>
+      <div class="w-full shrink-0" id="slide3">
+        <GraphicSpecies species="Chinstrap" />
+      </div>
+    </div>
+  </div>
+</Layout>
