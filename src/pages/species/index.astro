@@ -14,29 +14,19 @@ import Layout from "../../layouts/Layout.astro";
     Menu des espèces
   </h1>
 
-  <nav class="mt-16">
-    <ul class="flex flex-col md:flex-row gap-6 justify-center">
-      <li>
-        <a
-          href="/species/Adelie"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow"
-          >Manchot Adélie</a
-        >
-      </li>
-      <li>
-        <a
-          href="/species/Chinstrap"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow"
-          >Manchot Chinstrap</a
-        >
-      </li>
-      <li>
-        <a
-          href="/species/Gentoo"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow"
-          >Manchot Gentoo</a
-        >
-      </li>
-    </ul>
-  </nav>
+  <select
+    id="species"
+    class="block mx-auto p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
+  >
+    <option selected disabled value="">Selectionnez une espèce</option>
+    <option value="Adelie">Adelie</option>
+    <option value="Chinstrap">Chinstrap</option>
+    <option value="Gentoo">Gentoo</option>
+  </select>
 </Layout>
+<script>
+  document.querySelector("#species")?.addEventListener("change", (evt) => {
+    const value = (evt.target as HTMLSelectElement).value;
+    location.pathname = "/species/" + value;
+  });
+</script>
