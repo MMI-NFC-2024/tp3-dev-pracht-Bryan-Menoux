@@ -7,7 +7,9 @@ const species = Astro.props.species;
 const penguinsFiltered = penguins.filter((p) => p.species === species);
 ---
 
-<div class="flex flex-col items-center my-16">
+<div
+  class="flex flex-col items-center my-16 bg-blue-100 rounded-2xl p-6 shadow-lg border-2 border-blue-300 max-w-[80dvw] mx-auto"
+>
   <h1>{species} Penguins</h1>
   <PlotFigure
     options={{
@@ -20,4 +22,8 @@ const penguinsFiltered = penguins.filter((p) => p.species === species);
       ],
     }}
   />
+  <p class="mt-4 text-center text-gray-600">
+    Ce tableau comporte les données de {penguinsFiltered.length} pingouins de l'espèce
+    {species}.
+  </p>
 </div>
