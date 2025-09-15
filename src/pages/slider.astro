@@ -14,44 +14,33 @@ import GraphicSpecies from "../components/GraphicSpecies.astro";
   >
     Mes Pingouins
   </h1>
-  <nav>
-    <ul
-      class="flex flex-col gap-6 justify-center absolute transform -translate-y-1/2 top-1/2 left-6"
-    >
-      <li>
-        <a
-          href="#slide1"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow scroll-smooth"
-          >Manchot Adélie</a
-        >
-      </li>
-      <li>
-        <a
-          href="#slide2"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow scroll-smooth"
-          >Manchot Gentoo</a
-        >
-      </li>
-      <li>
-        <a
-          href="#slide3"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow scroll-smooth"
-          >Manchot Chinstrap</a
-        >
-      </li>
-    </ul>
-  </nav>
+  <select
+    id="species"
+    class="block mx-auto p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
+  >
+    <option selected disabled value="">Selectionnez une espèce</option>
+    <option value="Adelie">Adelie</option>
+    <option value="Chinstrap">Chinstrap</option>
+    <option value="Gentoo">Gentoo</option>
+  </select>
   <div class="relative w-full max-w-3xl mx-auto overflow-x-scroll">
     <div class="flex transition-transform duration-500 ease-in-out">
-      <div class="w-full shrink-0" id="slide1">
+      <div class="w-full shrink-0" id="Adelie">
         <GraphicSpecies species="Adelie" />
       </div>
-      <div class="w-full shrink-0" id="slide2">
+      <div class="w-full shrink-0" id="Gentoo">
         <GraphicSpecies species="Gentoo" />
       </div>
-      <div class="w-full shrink-0" id="slide3">
+      <div class="w-full shrink-0" id="Chinstrap">
         <GraphicSpecies species="Chinstrap" />
       </div>
     </div>
   </div>
 </Layout>
+
+<script>
+  document.querySelector("#species")?.addEventListener("change", (evt) => {
+    const value = (evt.target as HTMLSelectElement).value;
+    location.hash = value;
+  });
+</script>

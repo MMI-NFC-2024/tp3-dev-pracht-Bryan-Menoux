@@ -14,39 +14,15 @@ import Layout from "../layouts/Layout.astro";
     Menu des espèces
   </h1>
 
-  <nav class="mt-12">
-    <ul
-      class="flex flex-col gap-6 justify-center absolute transform -translate-y-1/2 top-1/2 left-6"
-    >
-      <li>
-        <a
-          href="/species/Adelie"
-          target="speciesFrame"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow transition"
-        >
-          Manchot Adélie
-        </a>
-      </li>
-      <li>
-        <a
-          href="/species/Chinstrap"
-          target="speciesFrame"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow transition"
-        >
-          Manchot Chinstrap
-        </a>
-      </li>
-      <li>
-        <a
-          href="/species/Gentoo"
-          target="speciesFrame"
-          class="text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md shadow transition"
-        >
-          Manchot Gentoo
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <select
+    id="species"
+    class="block mx-auto p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
+  >
+    <option selected disabled value="">Selectionnez une espèce</option>
+    <option value="Adelie">Adelie</option>
+    <option value="Chinstrap">Chinstrap</option>
+    <option value="Gentoo">Gentoo</option>
+  </select>
 
   <div class="mt-12 max-w-5xl mx-auto">
     <iframe
@@ -58,3 +34,10 @@ import Layout from "../layouts/Layout.astro";
       height="700"></iframe>
   </div>
 </Layout>
+<script>
+  document.querySelector("#species")?.addEventListener("change", (evt) => {
+    const value = (evt.target as HTMLSelectElement).value;
+    (document.querySelector("#speciesFrame") as HTMLIFrameElement).src =
+      "/species/" + value;
+  });
+</script>
